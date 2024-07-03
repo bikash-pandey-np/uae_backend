@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('deposits', function (Blueprint $table) {
             $table->id();
             $table->float('request_amount', 15, 2);
-            $table->foreignId('customer_currency_id')->constrained('customer_currencies');
+            $table->foreignId('currency_id')->constrained('currencies');
             $table->string('transaction_code')->unique();
             $table->foreignId('deposited_by')->constrained('customers');
             $table->foreignId('account_id')->nullable()->constrained('accounts');

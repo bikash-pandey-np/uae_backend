@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('withdraws', function (Blueprint $table) {
             $table->id();
             $table->float('request_amount', 15, 2);
-            $table->foreignId('customer_currency_id')->constrained('customer_currencies');
+            $table->foreignId('currency_id')->constrained('currencies');
             $table->string('transaction_code')->unique();
             $table->foreignId('requested_by')->constrained('customers');
             $table->dateTime('requested_at');

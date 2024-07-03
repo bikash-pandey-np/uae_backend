@@ -30,6 +30,7 @@ return new class extends Migration
             $table->float('pending_deposit', 15, 2)->default(0.00);
             $table->float('total_withdraw', 15, 2)->default(0.00);
             $table->float('credit_score', 15, 2)->default(0.00);
+            $table->foreignId('currency_id')->constrained('currencies');
             $table->rememberToken();
 
             $table->timestamps();

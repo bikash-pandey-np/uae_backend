@@ -4,7 +4,6 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\CustomerCurrency;
 use App\Models\Customer;
 use App\Models\Account;
 
@@ -14,7 +13,6 @@ class Deposit extends Model
 
     protected $fillable = [
         'request_amount',
-        'customer_currency_id',
         'transaction_code',
         'deposited_by',
         'account_id',
@@ -26,13 +24,14 @@ class Deposit extends Model
         'requested_at',
         'approved_at',
         'rejected_at',
+        'currency_id'
     ];
-
-    // Optionally define relationships if needed
-    public function customerCurrency()
+    public function currency()
     {
-        return $this->belongsTo(CustomerCurrency::class, 'customer_currency_id');
+        return $this->belongsTo(\App\Models\Currency::class);
     }
+
+ 
 
     public function depositedBy()
     {
@@ -42,5 +41,22 @@ class Deposit extends Model
     public function account()
     {
         return $this->belongsTo(Account::class);
+    }
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::creating(function ($deposit) {
+            $deposit->transaction_code = self::generateUniqueCode();
+        });
+    }
+
+    private static function generateUniqueCode()
+    {
+        do {
+            $code = 'DEP' . strtoupper(substr(str_shuffle('0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ'), 0, 4));
+        } while (self::where('transaction_code', $code)->exists());
+
+        return $code;
     }
 }

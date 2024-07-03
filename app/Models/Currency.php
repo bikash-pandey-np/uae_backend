@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Account;
-use App\Models\CustomerCurrency;
+use App\Models\Customer;
 
 class Currency extends Model
 {
@@ -22,8 +22,8 @@ class Currency extends Model
         return $this->hasMany(Account::class);
     }
 
-    public function customerCurrencies()
+    public function customers()
     {
-        return $this->hasMany(CustomerCurrency::class);
+        return $this->hasMany(Customer::class, 'currency_id');
     }
 }

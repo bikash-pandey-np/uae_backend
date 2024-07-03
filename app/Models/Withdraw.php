@@ -4,9 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\CustomerCurrency;
 use App\Models\Customer;
-
+use App\Models\Currency;
 
 class Withdraw extends Model
 {
@@ -14,7 +13,7 @@ class Withdraw extends Model
 
     protected $fillable = [
         'request_amount',
-        'customer_currency_id',
+        'currency_id',
         'transaction_code',
         'requested_by',
         'requested_at',
@@ -27,14 +26,32 @@ class Withdraw extends Model
         'reject_reason',
     ];
 
-    // Optionally define relationships if needed
-    public function customerCurrency()
+    public function currency()
     {
-        return $this->belongsTo(CustomerCurrency::class, 'customer_currency_id');
+        return $this->belongsTo(\App\Models\Currency::class);
     }
+
 
     public function requestedBy()
     {
         return $this->belongsTo(Customer::class, 'requested_by');
+    }
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::creating(function ($deposit) {
+            $deposit->transaction_code = self::generateUniqueCode();
+        });
+    }
+
+    private static function generateUniqueCode()
+    {
+        do {
+            $code = 'DEP' . strtoupper(substr(str_shuffle('0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ'), 0, 4));
+        } while (self::where('transaction_code', $code)->exists());
+
+        return $code;
     }
 }

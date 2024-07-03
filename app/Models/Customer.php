@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\CountryCode;
 use App\Models\Kyc;
-use App\Models\CustomerCurrency;
+use App\Models\Currency;
 use App\Models\Deposit;
 use App\Models\Withdraw;
 use App\Models\Position;
@@ -33,6 +33,7 @@ class Customer extends Model
         'pending_deposit',
         'total_withdraw',
         'credit_score',
+        'currency_id'
     ];
 
     protected $casts = [
@@ -47,6 +48,24 @@ class Customer extends Model
         'credit_score' => 'float',
     ];
 
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::creating(function ($customer) {
+            $customer->customer_code = self::generateUniqueCustomerCode();
+        });
+    }
+
+    private static function generateUniqueCustomerCode()
+    {
+        do {
+            $code = 'CUS' . strtoupper(substr(str_shuffle('0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ'), 0, 4));
+        } while (self::where('customer_code', $code)->exists());
+
+        return $code;
+    }
+
     public function countryCode()
     {
         return $this->belongsTo(CountryCode::class, 'country_code_id');
@@ -57,11 +76,11 @@ class Customer extends Model
         return $this->belongsTo(Kyc::class, 'kyc_id');
     }
 
-    public function customerCurrencies()
+    public function currency()
     {
-        return $this->hasMany(CustomerCurrency::class);
+        return $this->belongsTo(Currency::class, 'currency_id');
     }
-
+   
     public function deposits()
     {
         return $this->hasMany(Deposit::class, 'deposited_by');
