@@ -33,39 +33,35 @@ const Profile = ({ user }) => {
                     </div>
 
                     <div className="mt-12 w-full">
-                        <a href="#" className={`block text-center medium px-4 py-2 rounded shadow focus:outline-none ${darkMode ? 'bg-yellow-500 text-gray-800 hover:bg-yellow-600' : 'bg-blue-500 text-white hover:bg-blue-600'}`}>
+                        <a href={route('frontend.change-password')} className={`block text-center medium px-4 py-2 rounded shadow focus:outline-none ${darkMode ? 'bg-yellow-500 text-gray-800 hover:bg-yellow-600' : 'bg-blue-500 text-white hover:bg-blue-600'}`}>
                             Change Password
                         </a>
                     </div>
                     {!user.is_kyc_verified && (
                         <div className="mt-4 w-full">
-                            <a href="#" className={`block text-center medium px-4 py-2 rounded shadow focus:outline-none ${darkMode ? 'bg-yellow-500 text-gray-800 hover:bg-yellow-600' : 'bg-blue-500 text-white hover:bg-blue-600'}`}>
+                            <a href={route('frontend.verify-kyc')} className={`block text-center medium px-4 py-2 rounded shadow focus:outline-none ${darkMode ? 'bg-yellow-500 text-gray-800 hover:bg-yellow-600' : 'bg-blue-500 text-white hover:bg-blue-600'}`}>
                                 Verify KYC
                             </a>
                         </div>
                     )}
                     {!user.is_email_verified && (
                         <div className="mt-4 w-full">
-                            <a href="#" className={`block text-center medium px-4 py-2 rounded shadow focus:outline-none ${darkMode ? 'bg-yellow-500 text-gray-800 hover:bg-yellow-600' : 'bg-blue-500 text-white hover:bg-blue-600'}`}>
+                            <a href={route('frontend.verify-email')} className={`block text-center medium px-4 py-2 rounded shadow focus:outline-none ${darkMode ? 'bg-yellow-500 text-gray-800 hover:bg-yellow-600' : 'bg-blue-500 text-white hover:bg-blue-600'}`}>
                                 Verify email
                             </a>
                         </div>
                     )}
                     <div className="mt-4 w-full">
-                        <a href="#" className={`block text-center medium px-4 py-2 rounded shadow focus:outline-none ${darkMode ? 'bg-yellow-500 text-gray-800 hover:bg-yellow-600' : 'bg-blue-500 text-white hover:bg-blue-600'}`}>
+                        <a href={route('frontend.deposit-history')} className={`block text-center medium px-4 py-2 rounded shadow focus:outline-none ${darkMode ? 'bg-yellow-500 text-gray-800 hover:bg-yellow-600' : 'bg-blue-500 text-white hover:bg-blue-600'}`}>
                             Deposit History
                         </a>
                     </div>
                     <div className="mt-4 w-full">
-                        <a href="#" className={`block text-center medium px-4 py-2 rounded shadow focus:outline-none ${darkMode ? 'bg-yellow-500 text-gray-800 hover:bg-yellow-600' : 'bg-blue-500 text-white hover:bg-blue-600'}`}>
+                        <a href={route('frontend.withdraw-history')} className={`block text-center medium px-4 py-2 rounded shadow focus:outline-none ${darkMode ? 'bg-yellow-500 text-gray-800 hover:bg-yellow-600' : 'bg-blue-500 text-white hover:bg-blue-600'}`}>
                             Withdraw History
                         </a>
                     </div>
-                    <div className="mt-4 w-full">
-                    <a href="#" className={`block text-center medium px-4 py-2 rounded shadow focus:outline-none ${darkMode ? 'bg-yellow-500 text-gray-800 hover:bg-yellow-600' : 'bg-blue-500 text-white hover:bg-blue-600'}`}>
-                        Trade History
-                    </a>
-                </div>
+               
                     <div className="mt-4 w-full mb-12">
                         <a onClick={() => setShowLogoutModal(true)} className={`block text-center medium px-4 py-2 rounded shadow focus:outline-none ${darkMode ? 'bg-yellow-500 text-gray-800 hover:bg-yellow-600' : 'bg-blue-500 text-white hover:bg-blue-600'}`}>
                             Logout

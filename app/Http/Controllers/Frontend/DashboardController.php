@@ -244,7 +244,7 @@ class DashboardController extends Controller
     {
         $user = $request->user();
         $withdrawals = Customer::with(['withdraws' => function($query) {
-                $query->orderBy('created_at', 'desc');
+                $query->orderBy('created_at', 'desc')->with('currency');
             }])
             ->where('id', $user->id)->first();
         
@@ -252,6 +252,7 @@ class DashboardController extends Controller
             'withdrawals' => $withdrawals->withdraws,
         ]);
     }
+    
     public function getDepositHistoryPage(Request $request)
     {
         $user = $request->user();

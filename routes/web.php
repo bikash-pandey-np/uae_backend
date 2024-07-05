@@ -6,7 +6,8 @@ use App\Http\Controllers\Frontend\AuthController;
 use App\Http\Controllers\Frontend\DashboardController;
 
 
-Route::get('/', [DashboardController::class, 'getDashboardPage'])->name('frontend.dashboard');
+Route::get('/', [DashboardController::class, 'getDashboardPage'])
+    ->name('frontend.dashboard');
 
 Route::prefix('login')->group(function () {
     Route::get('/', [AuthController::class, 'showLoginForm'])->name('app.login');

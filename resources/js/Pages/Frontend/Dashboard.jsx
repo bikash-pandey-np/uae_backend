@@ -18,9 +18,11 @@ const Dashboard = ({assets}) => {
                         <p className="large font-bold">$ 1200 </p>
                         <p className="medium font-bold text-gray-400">≈ 1200 INR</p>
                     </div>
-                    <button className={`medium px-4 py-1 rounded shadow focus:outline-none ${darkMode ? 'bg-yellow-500 text-gray-800 hover:bg-yellow-600' : 'bg-blue-500 text-white hover:bg-blue-600'}`}>
+                    <a 
+                    href={route('frontend.deposit')} 
+                    className={`medium px-4 py-1 rounded shadow focus:outline-none ${darkMode ? 'bg-yellow-500 text-gray-800 hover:bg-yellow-600' : 'bg-blue-500 text-white hover:bg-blue-600'}`}>
                         Add Funds
-                    </button>
+                    </a>
                 </div>
                 <div className={`p-3 rounded-lg mt-4 ${darkMode ? 'bg-gray-900 text-white' : 'bg-white text-black'}`}>
                     <h2 className="extra_small">Assets</h2>

@@ -17,7 +17,7 @@ const Layout = ({ children }) => {
             <div className="min-h-screen flex flex-col">
                 <header className={`p-4 flex justify-between items-center shadow-md ${darkMode ? 'bg-gray-800 text-white' : 'bg-white text-black'}`}>
                     <div className="text-lg font-bold">
-                        <a>
+                        <a href={route('frontend.dashboard')}>
                             <img src={logo} className='logo' />
                         </a>
                     </div>
@@ -45,8 +45,12 @@ const Layout = ({ children }) => {
                 </main>
                 <footer className={`p-4 flex justify-around items-center shadow-md ${darkMode ? 'bg-gray-800 text-white' : 'bg-white text-black'} footer_menu_text`} style={{ position: 'fixed', bottom: 0, width: '100%' }}>
                     <div className="flex flex-col items-center">
-                        <FaHome className="mb-1" />
-                        <span>Home</span>
+                    <a href={route('frontend.dashboard')}
+                    className='flex flex-col items-center'
+                    >
+                    <FaHome className="mb-1" />
+                    <span>Home</span>
+                    </a>
                     </div>
                     <div className="flex flex-col items-center">
                         <FaChartLine className="mb-1" />
@@ -57,12 +61,21 @@ const Layout = ({ children }) => {
                         <span>Trade</span>
                     </div>
                     <div className="flex flex-col items-center">
+                        <a href={route('frontend.portfolio')}
+                        className='flex flex-col items-center'
+                        
+                        >
                         <FaWallet className="mb-1" />
                         <span>Portfolio</span>
+                        </a>
                     </div>
                     <div className="flex flex-col items-center">
+                        <a 
+                        className='flex flex-col items-center'
+                            href={route('frontend.profile')}>
                         <FaUser className="mb-1" />
                         <span>Profile</span>
+                        </a>
                     </div>
                 </footer>
             </div>

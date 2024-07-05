@@ -10,10 +10,10 @@ const Portfolio = ({ user }) => {
             <div className="container mx-auto mb-4">
                 <div className={`p-3 rounded-lg ${darkMode ? 'bg-gray-900 text-white' : 'bg-white text-black'}`}>
                     <div className="flex justify-between mb-4 pt-4">
-                        <a href="#" className={`block text-center medium px-4 py-2 rounded shadow focus:outline-none ${darkMode ? 'bg-yellow-500 text-gray-800 hover:bg-yellow-600' : 'bg-blue-500 text-white hover:bg-blue-600'}`}>
+                        <a href={route('frontend.deposit')} className={`block text-center medium px-4 py-2 rounded shadow focus:outline-none ${darkMode ? 'bg-yellow-500 text-gray-800 hover:bg-yellow-600' : 'bg-blue-500 text-white hover:bg-blue-600'}`}>
                             Deposit
                         </a>
-                        <a href="#" className={`block text-center medium px-4 py-2 rounded shadow focus:outline-none ${darkMode ? 'bg-yellow-500 text-gray-800 hover:bg-yellow-600' : 'bg-blue-500 text-white hover:bg-blue-600'}`}>
+                        <a href={route('frontend.withdraw')} className={`block text-center medium px-4 py-2 rounded shadow focus:outline-none ${darkMode ? 'bg-yellow-500 text-gray-800 hover:bg-yellow-600' : 'bg-blue-500 text-white hover:bg-blue-600'}`}>
                             Withdraw
                         </a>
                     </div>
