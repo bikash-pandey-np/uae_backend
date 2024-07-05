@@ -1,19 +1,21 @@
 import React from 'react';
 import { useForm } from '@inertiajs/inertia-react';
-import logo from '../../images/logo.png'
+import logo from '../../../../images/logo.png'
+
 const Register = ({countryCodes, currencies}) => {
     const { data, setData, post, processing, errors } = useForm({
-        full_name: '',
-        email: '',
-        password: '',
-        password_confirmation: '',
+        full_name: 'dasd',
+        email: 'bikashaya@gmail.com',
+        password: 'Nepal@123',
+        password_confirmation: 'Nepal@123',
         country_code_id: '',
-        contact_no: '',
+        contact_no: '9818252111',
         currency_id: '',
     });
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        console.log(data);
         post('/register');
     };
 
@@ -71,6 +73,7 @@ const Register = ({countryCodes, currencies}) => {
                                 onChange={(e) => setData('country_code_id', e.target.value)}
                                 className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
                             >
+                                <option value="">Code</option>
                                 {countryCodes.map((code) => (
                                     <option key={code.id} value={code.id}>{code.code}</option>
                                 ))}
@@ -94,8 +97,10 @@ const Register = ({countryCodes, currencies}) => {
                             onChange={(e) => setData('currency_id', e.target.value)}
                             className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
                         >
+                            <option value="">Currency</option>
+
                             {currencies.map((currency) => (
-                                <option key={currency.id} value={currency.id} selected={currency.symbol === "USDT"}>{currency.name}</option>
+                                <option key={currency.id} value={currency.id}>{currency.name}</option>
                             ))}
                         </select>
                         {errors.currency_id && <div className="text-red-500 mt-2">{errors.currency_id}</div>}

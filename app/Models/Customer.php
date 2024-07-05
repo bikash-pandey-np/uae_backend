@@ -3,7 +3,8 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 use App\Models\CountryCode;
 use App\Models\Kyc;
 use App\Models\Currency;
@@ -11,9 +12,9 @@ use App\Models\Deposit;
 use App\Models\Withdraw;
 use App\Models\Position;
 
-class Customer extends Model
+class Customer extends Authenticatable
 {
-    use HasFactory;
+    use HasFactory, Notifiable;
 
     protected $fillable = [
         'full_name',

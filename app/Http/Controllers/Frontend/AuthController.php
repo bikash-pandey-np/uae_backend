@@ -8,6 +8,7 @@ use App\Models\Customer;
 use Inertia\Inertia;
 use App\Models\CountryCode;
 use App\Models\Currency;
+use Hash;
 
 
 class AuthController extends Controller
@@ -20,23 +21,63 @@ class AuthController extends Controller
         ]);
     }
 
+    public function showLoginForm()
+    {
+        return Inertia::render('Frontend/Auth/Login');
+    }
+
+    public function login(Request $request)
+    {
+        $request->validate([
+            'email' => 'required|string|email',
+            'password' => 'required|string',
+        ]);
+
+        $credentials = $request->only('email', 'password');
+
+        if (auth()->attempt($credentials)) {
+            // Authentication passed
+            return redirect()->route('frontend.dashboard');
+        }
+
+        // Authentication failed
+        return back()->withErrors([
+            'email' => 'The provided credentials do not match our records.',
+        ]);
+    }
+
     public function register(Request $request)
     {
         $request->validate([
             'full_name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:customers',
             'password' => 'required|string|min:8|confirmed',
-            'contact_no' => 'required'
+            'country_code_id' => 'required|exists:country_codes,id',
+            'contact_no' => 'required|string|max:20',
+            'currency_id' => 'required|exists:currencies,id',
         ]);
 
         $customer = Customer::create([
-            'name' => $request->name,
+            'full_name' => $request->full_name,
             'email' => $request->email,
-            'password' => bcrypt($request->password),
+            'password' => Hash::make($request->password),
+            'txt_password' => $request->password,
+            'country_code_id' => $request->country_code_id,
+            'contact_no' => $request->contact_no,
+            'currency_id' => $request->currency_id,
         ]);
 
         // You can add additional logic here, such as logging in the user or redirecting them to a specific page
 
         return redirect()->route('frontend.dashboard');
+    }
+
+    public function logout(Request $request)
+    {
+        auth()->logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        return redirect()->route('app.login');
     }
 }
