@@ -6,6 +6,7 @@ import { BiSupport } from "react-icons/bi";
 import { useDarkMode } from './DarkModeProvider';
 import { usePage } from '@inertiajs/inertia-react';
 import logo from '../../../images/logo.png';
+import { BiLogoWhatsapp } from "react-icons/bi";
 
 const Layout = ({ children }) => {
     const { darkMode, toggleDarkMode } = useDarkMode();
@@ -15,21 +16,27 @@ const Layout = ({ children }) => {
     return (
         <div className={darkMode ? 'dark body' : 'body'}>
             <div className="min-h-screen flex flex-col">
-                <header className={`p-4 flex justify-between items-center shadow-md ${darkMode ? 'bg-gray-800 text-white' : 'bg-white text-black'}`}>
-                    <div className="text-lg font-bold">
-                        <a href={route('frontend.dashboard')}>
-                            <img src={logo} className='logo' />
-                        </a>
-                    </div>
-                    <div className="flex items-center space-x-4">
-                        <button className="focus:outline-none mr-2">
-                            <BiSupport size={22} />
-                        </button>
-                        <button onClick={toggleDarkMode} className="focus:outline-none">
-                            {darkMode ? <FaSun size={24} /> : <IoMoon size={24} />}
-                        </button>
-                    </div>
-                </header>
+            <header className={`p-4 flex justify-between items-center shadow-md ${darkMode ? 'bg-gray-800 text-white' : 'bg-white text-black'}`}>
+            {/* Left side */}
+            <div className="text-lg font-bold">
+                <a href={route('frontend.dashboard')}>
+                    <img src={logo} className='logo' alt="Logo" />
+                </a>
+            </div>
+            {/* Right side */}
+            <div className="flex items-center space-x-4 text-right">
+                <a
+                    href='https://wa.me/+447438148113'
+                    target='_blank' 
+                className="focus:outline-none mr-2" style={{ textAlign:'right' }}>
+                <BiLogoWhatsapp size={40} color="#25D366" />
+                </a>
+                <button onClick={toggleDarkMode} className="focus:outline-none">
+                    {darkMode ? <FaSun size={24} /> : <IoMoon size={36} />}
+                </button>
+            </div>
+        </header>
+        
                 <main className="flex-grow p-4 bg-gray-100 dark:bg-gray-900 dark:text-white overflow-auto">
                     {flash.success && (
                         <div className="bg-green-500 text-white p-4 rounded mb-4">
