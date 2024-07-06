@@ -1,0 +1,1 @@
+import{j as s}from"./app-f1dbd0ad.js";/* empty css            */const o=()=>s.jsxs("div",{children:[s.jsx("h1",{children:"This is test asd component"}),s.jsx("h2",{className:"text-red-500 font-bold",children:"Home"})]});export{o as default};

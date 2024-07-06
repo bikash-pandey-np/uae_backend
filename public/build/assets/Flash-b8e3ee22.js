@@ -1,0 +1,1 @@
+import{j as s}from"./app-f1dbd0ad.js";/* empty css            */const n=({type:r,message:e})=>{const t=()=>{switch(r){case"success":return"bg-green-500";case"error":return"bg-red-500";default:return"bg-gray-500"}};return s.jsx("div",{className:`m-4 p-4 rounded ${t()} text-white`,children:e})};export{n as default};
