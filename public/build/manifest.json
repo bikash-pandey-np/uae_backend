@@ -1,0 +1,225 @@
+{
+  "_Layout-29760884.js": {
+    "file": "assets/Layout-29760884.js",
+    "imports": [
+      "resources/js/app.jsx",
+      "_logo-1a4f8099.js"
+    ],
+    "isDynamicEntry": true
+  },
+  "_deposit-b6bfe0d7.js": {
+    "assets": [
+      "assets/deposit-bb80a9e1.png"
+    ],
+    "file": "assets/deposit-b6bfe0d7.js"
+  },
+  "_logo-1a4f8099.js": {
+    "assets": [
+      "assets/logo-27e53b9a.png"
+    ],
+    "file": "assets/logo-1a4f8099.js"
+  },
+  "_moment-a9aaa855.js": {
+    "file": "assets/moment-a9aaa855.js"
+  },
+  "resources/css/app.css": {
+    "file": "assets/app-deb7cf34.css",
+    "isEntry": true,
+    "src": "resources/css/app.css"
+  },
+  "resources/images/deposit.png": {
+    "file": "assets/deposit-bb80a9e1.png",
+    "src": "resources/images/deposit.png"
+  },
+  "resources/images/logo.png": {
+    "file": "assets/logo-27e53b9a.png",
+    "src": "resources/images/logo.png"
+  },
+  "resources/js/Pages/Frontend/Auth/Login.jsx": {
+    "css": [
+      "assets/app-deb7cf34.css"
+    ],
+    "file": "assets/Login-cdabf282.js",
+    "imports": [
+      "resources/js/app.jsx",
+      "_logo-1a4f8099.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/Pages/Frontend/Auth/Login.jsx"
+  },
+  "resources/js/Pages/Frontend/Auth/Register.jsx": {
+    "css": [
+      "assets/app-deb7cf34.css"
+    ],
+    "file": "assets/Register-c980ec14.js",
+    "imports": [
+      "resources/js/app.jsx",
+      "_logo-1a4f8099.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/Pages/Frontend/Auth/Register.jsx"
+  },
+  "resources/js/Pages/Frontend/ChangePassword.jsx": {
+    "css": [
+      "assets/app-deb7cf34.css"
+    ],
+    "file": "assets/ChangePassword-8c8aa3cd.js",
+    "imports": [
+      "resources/js/app.jsx",
+      "_Layout-29760884.js",
+      "_logo-1a4f8099.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/Pages/Frontend/ChangePassword.jsx"
+  },
+  "resources/js/Pages/Frontend/Dashboard.jsx": {
+    "css": [
+      "assets/app-deb7cf34.css"
+    ],
+    "file": "assets/Dashboard-e280beb6.js",
+    "imports": [
+      "resources/js/app.jsx",
+      "_Layout-29760884.js",
+      "_logo-1a4f8099.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/Pages/Frontend/Dashboard.jsx"
+  },
+  "resources/js/Pages/Frontend/Deposit.jsx": {
+    "css": [
+      "assets/app-deb7cf34.css"
+    ],
+    "file": "assets/Deposit-96968968.js",
+    "imports": [
+      "resources/js/app.jsx",
+      "_Layout-29760884.js",
+      "_deposit-b6bfe0d7.js",
+      "_logo-1a4f8099.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/Pages/Frontend/Deposit.jsx"
+  },
+  "resources/js/Pages/Frontend/DepositHistory.jsx": {
+    "css": [
+      "assets/app-deb7cf34.css"
+    ],
+    "file": "assets/DepositHistory-59867920.js",
+    "imports": [
+      "resources/js/app.jsx",
+      "_Layout-29760884.js",
+      "_moment-a9aaa855.js",
+      "_logo-1a4f8099.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/Pages/Frontend/DepositHistory.jsx"
+  },
+  "resources/js/Pages/Frontend/Portfolio.jsx": {
+    "css": [
+      "assets/app-deb7cf34.css"
+    ],
+    "file": "assets/Portfolio-509be792.js",
+    "imports": [
+      "resources/js/app.jsx",
+      "_Layout-29760884.js",
+      "_logo-1a4f8099.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/Pages/Frontend/Portfolio.jsx"
+  },
+  "resources/js/Pages/Frontend/Profile.jsx": {
+    "css": [
+      "assets/app-deb7cf34.css"
+    ],
+    "file": "assets/Profile-ba6214bb.js",
+    "imports": [
+      "resources/js/app.jsx",
+      "_Layout-29760884.js",
+      "_moment-a9aaa855.js",
+      "_logo-1a4f8099.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/Pages/Frontend/Profile.jsx"
+  },
+  "resources/js/Pages/Frontend/VerifyEmail.jsx": {
+    "css": [
+      "assets/app-deb7cf34.css"
+    ],
+    "file": "assets/VerifyEmail-f79ed393.js",
+    "imports": [
+      "resources/js/app.jsx",
+      "_Layout-29760884.js",
+      "_logo-1a4f8099.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/Pages/Frontend/VerifyEmail.jsx"
+  },
+  "resources/js/Pages/Frontend/VerifyKyc.jsx": {
+    "css": [
+      "assets/app-deb7cf34.css"
+    ],
+    "file": "assets/VerifyKyc-3fd4c29f.js",
+    "imports": [
+      "resources/js/app.jsx",
+      "_Layout-29760884.js",
+      "_logo-1a4f8099.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/Pages/Frontend/VerifyKyc.jsx"
+  },
+  "resources/js/Pages/Frontend/Withdraw.jsx": {
+    "css": [
+      "assets/app-deb7cf34.css"
+    ],
+    "file": "assets/Withdraw-e69e097a.js",
+    "imports": [
+      "resources/js/app.jsx",
+      "_Layout-29760884.js",
+      "_deposit-b6bfe0d7.js",
+      "_logo-1a4f8099.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/Pages/Frontend/Withdraw.jsx"
+  },
+  "resources/js/Pages/Frontend/WithdrawHistory.jsx": {
+    "css": [
+      "assets/app-deb7cf34.css"
+    ],
+    "file": "assets/WithdrawHistory-f723758a.js",
+    "imports": [
+      "resources/js/app.jsx",
+      "_Layout-29760884.js",
+      "_moment-a9aaa855.js",
+      "_logo-1a4f8099.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/Pages/Frontend/WithdrawHistory.jsx"
+  },
+  "resources/js/app.css": {
+    "file": "assets/app-b5f07fcd.css",
+    "src": "resources/js/app.css"
+  },
+  "resources/js/app.jsx": {
+    "css": [
+      "assets/app-b5f07fcd.css",
+      "assets/app-deb7cf34.css"
+    ],
+    "dynamicImports": [
+      "_Layout-29760884.js",
+      "resources/js/Pages/Frontend/Auth/Login.jsx",
+      "resources/js/Pages/Frontend/Auth/Register.jsx",
+      "resources/js/Pages/Frontend/ChangePassword.jsx",
+      "resources/js/Pages/Frontend/Dashboard.jsx",
+      "resources/js/Pages/Frontend/Deposit.jsx",
+      "resources/js/Pages/Frontend/DepositHistory.jsx",
+      "resources/js/Pages/Frontend/Portfolio.jsx",
+      "resources/js/Pages/Frontend/Profile.jsx",
+      "resources/js/Pages/Frontend/VerifyEmail.jsx",
+      "resources/js/Pages/Frontend/VerifyKyc.jsx",
+      "resources/js/Pages/Frontend/Withdraw.jsx",
+      "resources/js/Pages/Frontend/WithdrawHistory.jsx"
+    ],
+    "file": "assets/app-a4aaabc3.js",
+    "isEntry": true,
+    "src": "resources/js/app.jsx"
+  }
+}
