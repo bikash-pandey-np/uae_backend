@@ -34,7 +34,9 @@ class Customer extends Authenticatable
         'pending_deposit',
         'total_withdraw',
         'credit_score',
-        'currency_id'
+        'currency_id',
+        'freezed',
+        'traded_amount'
     ];
 
     protected $casts = [

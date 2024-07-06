@@ -4,11 +4,12 @@ use Illuminate\Support\Facades\Route;
 use Inertia\Inertia; 
 use App\Http\Controllers\Frontend\AuthController;
 use App\Http\Controllers\Frontend\DashboardController;
+use App\Http\Controllers\Frontend\TradeController;
 
 
 Route::get('/share-data', [DashboardController::class, 'getShareData'])
     ->name('frontend.share-data');
-Route::get('/crypto-data/{symbol}', [DashboardController::class, 'getCryptoData'])
+Route::get('/crypto-data', [DashboardController::class, 'getCryptoData'])
     ->name('frontend.crypto-data');
 
 
@@ -17,6 +18,7 @@ Route::get('/market', [DashboardController::class, 'getMarketPage'])
 
 
 Route::get('/', [DashboardController::class, 'getDashboardPage'])
+    ->middleware('only_cust')
     ->name('frontend.dashboard');
 
 Route::prefix('login')->group(function () {
@@ -86,3 +88,31 @@ Route::get('/withdraw-history', [DashboardController::class, 'getWithdrawHistory
 Route::get('/deposit-history', [DashboardController::class, 'getDepositHistoryPage'])
     ->middleware('only_cust')
     ->name('frontend.deposit-history');
+
+Route::get('/trade', [DashboardController::class, 'getTradePage'])
+    ->middleware('only_cust')
+    ->name('frontend.trade');
+
+
+Route::get('/trade/crypto/{symbol}', [DashboardController::class, 'getTradePageBySymbol'])
+    ->middleware('only_cust')
+    ->name('frontend.trade-by-symbol_crypto');
+
+
+Route::get('/trade/shares/{symbol}', [DashboardController::class, 'getTradePageBySymbolShare'])
+    ->middleware('only_cust')
+    ->name('frontend.trade-by-symbol');
+
+
+Route::post('/trade/crypto', [TradeController::class, 'handleTradeRequest'])
+    ->middleware('only_cust')
+    ->name('frontend.crypto.trade');
+
+    Route::post('/trade/stock', [TradeController::class, 'handleTradeRequestShare'])
+    ->middleware('only_cust')
+    ->name('frontend.stock.trade');
+
+    Route::get('/get-share-price/{symbol}', [TradeController::class, 'getSingleSharePrice'])
+        ->middleware('only_cust')
+        ->name('frontend.get-share-price');
+

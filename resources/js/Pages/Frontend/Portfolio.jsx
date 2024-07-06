@@ -43,11 +43,11 @@ const Portfolio = ({ user }) => {
                         </div>
                         <div className={`p-4 rounded-lg shadow-lg ${darkMode ? 'bg-gray-800 text-white' : 'bg-white text-black'}`}>
                             <h2 className="text-xl font-bold">Freezed Amount</h2>
-                            <p className="mt-2">{user.pending_deposit} USDT</p>
+                            <p className="mt-2">{user.freezed} USDT</p>
                         </div>
                         <div className={`p-4 rounded-lg shadow-lg ${darkMode ? 'bg-gray-800 text-white' : 'bg-white text-black'} mb-12`}>
                             <h2 className="text-xl font-bold">Traded Amount</h2>
-                            <p className="mt-2">100 USDT</p>
+                            <p className="mt-2">{user.traded_amount} USDT</p>
                         </div>
                     </div>
                 </div>

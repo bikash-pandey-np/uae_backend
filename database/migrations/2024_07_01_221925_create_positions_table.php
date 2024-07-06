@@ -14,10 +14,11 @@ return new class extends Migration
         Schema::create('positions', function (Blueprint $table) {
             $table->id();
             $table->float('amount', 15, 2);
-            $table->enum('type', ['Long', 'Short']);
+            $table->string('symbol');
+            $table->enum('type', ['long', 'short']);
             $table->float('entry_price', 15, 2);
+            $table->boolean('is_crypto')->default(true);
             $table->string('identifier')->unique();
-            $table->foreignId('asset_id')->constrained('assets');
             $table->foreignId('traded_by')->constrained('customers');
             $table->dateTime('traded_datetime');
             $table->integer('trade_duration');

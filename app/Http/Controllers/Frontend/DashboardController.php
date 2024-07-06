@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
-use App\Models\Asset;
 use App\Models\Customer;
 use App\Models\Currency;
 use App\Models\Account;
@@ -24,38 +23,97 @@ class DashboardController extends Controller
     public function getShareData()
     {
         $client = new \GuzzleHttp\Client();
-        $response = $client->get('https://api-v2.capex.com/quotesv2?key=1&q=facebook,tesla,google,apple,nvidia,amzn,netflix');
+        $response = $client->get('https://api-v2.capex.com/quotesv2?key=1&q=facebook,tesla,google,apple,nvidia,amzn,netflix,adobe');
         $share_datas = json_decode($response->getBody()->getContents(), true);
         
         return response()->json([
             'data' => $share_datas
         ]);
     }
-    public function getCryptoData($symbol)
+    public function getCryptoData()
     {
+        $url = 'https://api-v2.capex.com/quotesv2?key=1&q=aaveusd,linkusd,bitcoin,ethereum,adausd,ripple,dash,litecoin';
+
         $client = new \GuzzleHttp\Client();
-        $response = $client->get("https://ticker.thecapex.pro/?symbol={$symbol}");
+        $response = $client->get($url);
         $share_datas = json_decode($response->getBody()->getContents(), true);
         
         return response()->json([
             'data' => $share_datas
         ]);
     }
+
+
+    public function getTradePageBySymbol(Request $request, $symbol)
+    {
+        return Inertia::render('Frontend/TradeBySymbol', [
+            'balance' => auth()->user()->balance_usdt,
+            'symbol' => $symbol,
+            'form_type' => $request->type,
+
+            'user_currency' => Customer::with('currency:id,rate_per_usdt,symbol')->find(auth()->user()->id)->currency
+        ]);
+    }
+
+    public function priceFetcherHelper($symbol)
+    {
+        switch ($symbol) {
+            case 'META':
+                return 'facebook';
+            case 'TSLA':
+                return 'tesla';
+            case 'GOOG':
+                return 'google';
+            case 'AAPL':
+                return 'apple';
+            case 'NVDA':
+                return 'nvidia';
+            case 'AMZN':
+                return 'amzn';
+            case 'NFLX':
+                return 'netflix';
+            case 'ADBE':
+                return 'adobe';
+            default:
+                return '';
+        }
+    }
+
+    public function getTradePageBySymbolShare(Request $request, $symbol)
+    {
+
+        
+        return Inertia::render('Frontend/TradePageShare', [
+            'balance' => auth()->user()->balance_usdt,
+            'symbol' => $symbol,
+            'form_type' => $request->type,
+            'price_url' => route('frontend.get-share-price', $this->priceFetcherHelper($symbol)),
+            'user_currency' => Customer::with('currency:id,rate_per_usdt,symbol')->find(auth()->user()->id)->currency
+        ]);
+    }
+    public function getTradePage()
+    {
+        return Inertia::render('Frontend/Trade');
+    }
+
+
     public function getMarketPage()
     {
-        $activeAssets = Asset::where('is_active', true)->get();
         return Inertia::render('Frontend/Market', [
-            'assets' => $activeAssets,
+            'balance' => auth()->user()->balance_usdt,
+            'user_currency' => Customer::with('currency:id,rate_per_usdt,symbol')->find(auth()->user()->id)->currency
+
         ]);
     }
 
     public function getDashboardPage()
     {
-        $assets = Asset::all();
         
         
         return Inertia::render('Frontend/Dashboard', [
-            'assets' => $assets,
+            'balance' => auth()->user()->balance_usdt,
+            'user_currency' => Customer::with('currency:id,rate_per_usdt,symbol')->find(auth()->user()->id)->currency
+
         ]);
     }
 

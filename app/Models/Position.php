@@ -16,13 +16,14 @@ class Position extends Model
         'type',
         'entry_price',
         'identifier',
-        'asset_id',
         'traded_by',
         'traded_datetime',
         'trade_duration',
         'trade_close_price',
         'will_close_at',
         'closed_at',
+        'is_crypto',
+        'symbol',
         'outcome',
         'status',
         'pnl',
@@ -33,14 +34,27 @@ class Position extends Model
         'is_active' => 'boolean',
     ];
 
-    // Define relationships if needed
-    public function asset()
-    {
-        return $this->belongsTo(Asset::class);
-    }
-
+ 
     public function tradedBy()
     {
         return $this->belongsTo(Customer::class, 'traded_by');
+    }
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::creating(function ($position) {
+            $position->identifier = self::generateUniqueCode();
+        });
+    }
+
+    private static function generateUniqueCode()
+    {
+        do {
+            $code = 'TRD' . strtoupper(substr(str_shuffle('0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ'), 0, 4));
+        } while (self::where('identifier', $code)->exists());
+
+        return $code;
     }
 }

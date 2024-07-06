@@ -67,8 +67,12 @@ const Layout = ({ children }) => {
                     </a>
                     </div>
                     <div className="flex flex-col items-center">
-                        <FaExchangeAlt className="mb-1" />
+                    <a href={route('frontend.trade')}
+                    className='flex flex-col items-center'
+                    >
+                    <FaExchangeAlt className="mb-1" />
                         <span>Trade</span>
+                    </a>
                     </div>
                     <div className="flex flex-col items-center">
                         <a href={route('frontend.portfolio')}
