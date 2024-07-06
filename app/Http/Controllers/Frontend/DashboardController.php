@@ -20,12 +20,42 @@ use Auth;
 
 class DashboardController extends Controller
 {
+
+    public function getShareData()
+    {
+        $client = new \GuzzleHttp\Client();
+        $response = $client->get('https://api-v2.capex.com/quotesv2?key=1&q=facebook,tesla,google,apple,nvidia,amzn,netflix');
+        $share_datas = json_decode($response->getBody()->getContents(), true);
+        
+        return response()->json([
+            'data' => $share_datas
+        ]);
+    }
+    public function getCryptoData($symbol)
+    {
+        $client = new \GuzzleHttp\Client();
+        $response = $client->get("https://ticker.thecapex.pro/?symbol={$symbol}");
+        $share_datas = json_decode($response->getBody()->getContents(), true);
+        
+        return response()->json([
+            'data' => $share_datas
+        ]);
+    }
+    public function getMarketPage()
+    {
+        $activeAssets = Asset::where('is_active', true)->get();
+        return Inertia::render('Frontend/Market', [
+            'assets' => $activeAssets,
+        ]);
+    }
+
     public function getDashboardPage()
     {
         $assets = Asset::all();
         
+        
         return Inertia::render('Frontend/Dashboard', [
-            'assets' => $assets
+            'assets' => $assets,
         ]);
     }
 

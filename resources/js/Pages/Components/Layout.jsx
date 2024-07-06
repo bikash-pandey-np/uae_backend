@@ -60,8 +60,11 @@ const Layout = ({ children }) => {
                     </a>
                     </div>
                     <div className="flex flex-col items-center">
-                        <FaChartLine className="mb-1" />
-                        <span>Market</span>
+                    <a href={route('frontend.market')}
+                    className="flex flex-col items-center">
+                    <FaChartLine className="mb-1" />
+                    <span>Market</span>
+                    </a>
                     </div>
                     <div className="flex flex-col items-center">
                         <FaExchangeAlt className="mb-1" />

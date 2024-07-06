@@ -6,6 +6,16 @@ use App\Http\Controllers\Frontend\AuthController;
 use App\Http\Controllers\Frontend\DashboardController;
 
 
+Route::get('/share-data', [DashboardController::class, 'getShareData'])
+    ->name('frontend.share-data');
+Route::get('/crypto-data/{symbol}', [DashboardController::class, 'getCryptoData'])
+    ->name('frontend.crypto-data');
+
+
+Route::get('/market', [DashboardController::class, 'getMarketPage'])
+    ->name('frontend.market');
+
+
 Route::get('/', [DashboardController::class, 'getDashboardPage'])
     ->name('frontend.dashboard');
 
