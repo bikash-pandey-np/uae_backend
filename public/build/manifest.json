@@ -1,6 +1,6 @@
 {
-  "_Layout-987ad2d5.js": {
-    "file": "assets/Layout-987ad2d5.js",
+  "_Layout-72b320fe.js": {
+    "file": "assets/Layout-72b320fe.js",
     "imports": [
       "resources/js/app.jsx",
       "_logo-1a4f8099.js"
@@ -22,8 +22,8 @@
     ],
     "file": "assets/logo-1a4f8099.js"
   },
-  "_module-fbd4da63.js": {
-    "file": "assets/module-fbd4da63.js",
+  "_module-c60f5699.js": {
+    "file": "assets/module-c60f5699.js",
     "imports": [
       "resources/js/app.jsx"
     ]
@@ -32,7 +32,7 @@
     "file": "assets/moment-a9aaa855.js"
   },
   "resources/css/app.css": {
-    "file": "assets/app-e3815831.css",
+    "file": "assets/app-8f2c032e.css",
     "isEntry": true,
     "src": "resources/css/app.css"
   },
@@ -46,20 +46,39 @@
   },
   "resources/js/Pages/Components/Chart.jsx": {
     "css": [
-      "assets/app-e3815831.css"
+      "assets/app-8f2c032e.css"
     ],
-    "file": "assets/Chart-dad9e0f3.js",
+    "file": "assets/Chart-d8bd85de.js",
     "imports": [
       "resources/js/app.jsx"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/Pages/Components/Chart.jsx"
   },
+  "resources/js/Pages/Frontend/ActiveTradePage.jsx": {
+    "css": [
+      "assets/app-8f2c032e.css"
+    ],
+    "file": "assets/ActiveTradePage-2abe2e16.js",
+    "imports": [
+      "resources/js/app.jsx",
+      "_Layout-72b320fe.js",
+      "_axios-21b846bc.js",
+      "_logo-1a4f8099.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/Pages/Frontend/ActiveTradePage.jsx"
+  },
+  "resources/js/Pages/Frontend/Auth/Login.css": {
+    "file": "assets/Login-d9e3f7bd.css",
+    "src": "resources/js/Pages/Frontend/Auth/Login.css"
+  },
   "resources/js/Pages/Frontend/Auth/Login.jsx": {
     "css": [
-      "assets/app-e3815831.css"
+      "assets/Login-d9e3f7bd.css",
+      "assets/app-8f2c032e.css"
     ],
-    "file": "assets/Login-26b89587.js",
+    "file": "assets/Login-52b24b61.js",
     "imports": [
       "resources/js/app.jsx",
       "_logo-1a4f8099.js"
@@ -69,9 +88,9 @@
   },
   "resources/js/Pages/Frontend/Auth/Register.jsx": {
     "css": [
-      "assets/app-e3815831.css"
+      "assets/app-8f2c032e.css"
     ],
-    "file": "assets/Register-9ffc9ed0.js",
+    "file": "assets/Register-d2a037a8.js",
     "imports": [
       "resources/js/app.jsx",
       "_logo-1a4f8099.js"
@@ -81,27 +100,40 @@
   },
   "resources/js/Pages/Frontend/ChangePassword.jsx": {
     "css": [
-      "assets/app-e3815831.css"
+      "assets/app-8f2c032e.css"
     ],
-    "file": "assets/ChangePassword-c65c23f3.js",
+    "file": "assets/ChangePassword-03834c74.js",
     "imports": [
       "resources/js/app.jsx",
-      "_Layout-987ad2d5.js",
+      "_Layout-72b320fe.js",
       "_logo-1a4f8099.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/Pages/Frontend/ChangePassword.jsx"
   },
+  "resources/js/Pages/Frontend/CompletedTrade.jsx": {
+    "css": [
+      "assets/app-8f2c032e.css"
+    ],
+    "file": "assets/CompletedTrade-7f54f6cc.js",
+    "imports": [
+      "resources/js/app.jsx",
+      "_Layout-72b320fe.js",
+      "_logo-1a4f8099.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/Pages/Frontend/CompletedTrade.jsx"
+  },
   "resources/js/Pages/Frontend/Dashboard.jsx": {
     "css": [
-      "assets/app-e3815831.css"
+      "assets/app-8f2c032e.css"
     ],
-    "file": "assets/Dashboard-49892868.js",
+    "file": "assets/Dashboard-691ebda0.js",
     "imports": [
       "resources/js/app.jsx",
       "_axios-21b846bc.js",
-      "_Layout-987ad2d5.js",
-      "_module-fbd4da63.js",
+      "_Layout-72b320fe.js",
+      "_module-c60f5699.js",
       "_logo-1a4f8099.js"
     ],
     "isDynamicEntry": true,
@@ -109,12 +141,12 @@
   },
   "resources/js/Pages/Frontend/Deposit.jsx": {
     "css": [
-      "assets/app-e3815831.css"
+      "assets/app-8f2c032e.css"
     ],
-    "file": "assets/Deposit-9ec9fa0c.js",
+    "file": "assets/Deposit-c9acb959.js",
     "imports": [
       "resources/js/app.jsx",
-      "_Layout-987ad2d5.js",
+      "_Layout-72b320fe.js",
       "_deposit-b6bfe0d7.js",
       "_logo-1a4f8099.js"
     ],
@@ -123,12 +155,12 @@
   },
   "resources/js/Pages/Frontend/DepositHistory.jsx": {
     "css": [
-      "assets/app-e3815831.css"
+      "assets/app-8f2c032e.css"
     ],
-    "file": "assets/DepositHistory-917735e3.js",
+    "file": "assets/DepositHistory-e1d32df0.js",
     "imports": [
       "resources/js/app.jsx",
-      "_Layout-987ad2d5.js",
+      "_Layout-72b320fe.js",
       "_moment-a9aaa855.js",
       "_logo-1a4f8099.js"
     ],
@@ -137,14 +169,14 @@
   },
   "resources/js/Pages/Frontend/Market.jsx": {
     "css": [
-      "assets/app-e3815831.css"
+      "assets/app-8f2c032e.css"
     ],
-    "file": "assets/Market-8af12faa.js",
+    "file": "assets/Market-7a5851b8.js",
     "imports": [
       "resources/js/app.jsx",
       "_axios-21b846bc.js",
-      "_Layout-987ad2d5.js",
-      "_module-fbd4da63.js",
+      "_Layout-72b320fe.js",
+      "_module-c60f5699.js",
       "_logo-1a4f8099.js"
     ],
     "isDynamicEntry": true,
@@ -152,12 +184,12 @@
   },
   "resources/js/Pages/Frontend/Portfolio.jsx": {
     "css": [
-      "assets/app-e3815831.css"
+      "assets/app-8f2c032e.css"
     ],
-    "file": "assets/Portfolio-c71eae04.js",
+    "file": "assets/Portfolio-674c5e02.js",
     "imports": [
       "resources/js/app.jsx",
-      "_Layout-987ad2d5.js",
+      "_Layout-72b320fe.js",
       "_logo-1a4f8099.js"
     ],
     "isDynamicEntry": true,
@@ -165,12 +197,12 @@
   },
   "resources/js/Pages/Frontend/Profile.jsx": {
     "css": [
-      "assets/app-e3815831.css"
+      "assets/app-8f2c032e.css"
     ],
-    "file": "assets/Profile-accde1de.js",
+    "file": "assets/Profile-cb9a23ba.js",
     "imports": [
       "resources/js/app.jsx",
-      "_Layout-987ad2d5.js",
+      "_Layout-72b320fe.js",
       "_moment-a9aaa855.js",
       "_logo-1a4f8099.js"
     ],
@@ -179,12 +211,12 @@
   },
   "resources/js/Pages/Frontend/Trade.jsx": {
     "css": [
-      "assets/app-e3815831.css"
+      "assets/app-8f2c032e.css"
     ],
-    "file": "assets/Trade-59d20d3b.js",
+    "file": "assets/Trade-54673888.js",
     "imports": [
       "resources/js/app.jsx",
-      "_Layout-987ad2d5.js",
+      "_Layout-72b320fe.js",
       "resources/js/Pages/Components/Chart.jsx",
       "_logo-1a4f8099.js"
     ],
@@ -193,12 +225,12 @@
   },
   "resources/js/Pages/Frontend/TradeBySymbol.jsx": {
     "css": [
-      "assets/app-e3815831.css"
+      "assets/app-8f2c032e.css"
     ],
-    "file": "assets/TradeBySymbol-63c0d762.js",
+    "file": "assets/TradeBySymbol-1ee66084.js",
     "imports": [
       "resources/js/app.jsx",
-      "_Layout-987ad2d5.js",
+      "_Layout-72b320fe.js",
       "_axios-21b846bc.js",
       "_logo-1a4f8099.js"
     ],
@@ -207,12 +239,12 @@
   },
   "resources/js/Pages/Frontend/TradePageShare.jsx": {
     "css": [
-      "assets/app-e3815831.css"
+      "assets/app-8f2c032e.css"
     ],
-    "file": "assets/TradePageShare-8db9a3df.js",
+    "file": "assets/TradePageShare-8c313f22.js",
     "imports": [
       "resources/js/app.jsx",
-      "_Layout-987ad2d5.js",
+      "_Layout-72b320fe.js",
       "_axios-21b846bc.js",
       "_logo-1a4f8099.js"
     ],
@@ -221,12 +253,12 @@
   },
   "resources/js/Pages/Frontend/VerifyEmail.jsx": {
     "css": [
-      "assets/app-e3815831.css"
+      "assets/app-8f2c032e.css"
     ],
-    "file": "assets/VerifyEmail-c0b86145.js",
+    "file": "assets/VerifyEmail-016e3041.js",
     "imports": [
       "resources/js/app.jsx",
-      "_Layout-987ad2d5.js",
+      "_Layout-72b320fe.js",
       "_logo-1a4f8099.js"
     ],
     "isDynamicEntry": true,
@@ -234,12 +266,12 @@
   },
   "resources/js/Pages/Frontend/VerifyKyc.jsx": {
     "css": [
-      "assets/app-e3815831.css"
+      "assets/app-8f2c032e.css"
     ],
-    "file": "assets/VerifyKyc-9aed17ca.js",
+    "file": "assets/VerifyKyc-ffc93926.js",
     "imports": [
       "resources/js/app.jsx",
-      "_Layout-987ad2d5.js",
+      "_Layout-72b320fe.js",
       "_logo-1a4f8099.js"
     ],
     "isDynamicEntry": true,
@@ -247,12 +279,12 @@
   },
   "resources/js/Pages/Frontend/Withdraw.jsx": {
     "css": [
-      "assets/app-e3815831.css"
+      "assets/app-8f2c032e.css"
     ],
-    "file": "assets/Withdraw-f60a0326.js",
+    "file": "assets/Withdraw-248e6fac.js",
     "imports": [
       "resources/js/app.jsx",
-      "_Layout-987ad2d5.js",
+      "_Layout-72b320fe.js",
       "_deposit-b6bfe0d7.js",
       "_logo-1a4f8099.js"
     ],
@@ -261,12 +293,12 @@
   },
   "resources/js/Pages/Frontend/WithdrawHistory.jsx": {
     "css": [
-      "assets/app-e3815831.css"
+      "assets/app-8f2c032e.css"
     ],
-    "file": "assets/WithdrawHistory-95c552cb.js",
+    "file": "assets/WithdrawHistory-27b87297.js",
     "imports": [
       "resources/js/app.jsx",
-      "_Layout-987ad2d5.js",
+      "_Layout-72b320fe.js",
       "_moment-a9aaa855.js",
       "_logo-1a4f8099.js"
     ],
@@ -280,14 +312,16 @@
   "resources/js/app.jsx": {
     "css": [
       "assets/app-b5f07fcd.css",
-      "assets/app-e3815831.css"
+      "assets/app-8f2c032e.css"
     ],
     "dynamicImports": [
       "resources/js/Pages/Components/Chart.jsx",
-      "_Layout-987ad2d5.js",
+      "_Layout-72b320fe.js",
+      "resources/js/Pages/Frontend/ActiveTradePage.jsx",
       "resources/js/Pages/Frontend/Auth/Login.jsx",
       "resources/js/Pages/Frontend/Auth/Register.jsx",
       "resources/js/Pages/Frontend/ChangePassword.jsx",
+      "resources/js/Pages/Frontend/CompletedTrade.jsx",
       "resources/js/Pages/Frontend/Dashboard.jsx",
       "resources/js/Pages/Frontend/Deposit.jsx",
       "resources/js/Pages/Frontend/DepositHistory.jsx",
@@ -302,7 +336,7 @@
       "resources/js/Pages/Frontend/Withdraw.jsx",
       "resources/js/Pages/Frontend/WithdrawHistory.jsx"
     ],
-    "file": "assets/app-f8c99a67.js",
+    "file": "assets/app-90e89022.js",
     "isEntry": true,
     "src": "resources/js/app.jsx"
   }
