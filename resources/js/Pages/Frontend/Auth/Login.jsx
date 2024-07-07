@@ -8,8 +8,8 @@ import 'react-toastify/dist/ReactToastify.css';
 
 const Login = () => {
     const { data, setData, post, processing, errors } = useForm({
-        email: 'john.doe@example.com',
-        password: 'password123',
+        email: '',
+        password: '',
     });
     const { props } = usePage();
     const { flash } = props;

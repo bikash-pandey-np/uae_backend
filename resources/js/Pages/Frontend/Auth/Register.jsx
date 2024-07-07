@@ -4,12 +4,12 @@ import logo from '../../../../images/logo.png'
 
 const Register = ({countryCodes, currencies}) => {
     const { data, setData, post, processing, errors } = useForm({
-        full_name: 'dasd',
-        email: 'bikashaya@gmail.com',
-        password: 'Nepal@123',
-        password_confirmation: 'Nepal@123',
+        full_name: '',
+        email: '',
+        password: '',
+        password_confirmation: '',
         country_code_id: '',
-        contact_no: '9818252111',
+        contact_no: '',
         currency_id: '',
     });
 
