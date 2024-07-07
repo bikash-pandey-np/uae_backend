@@ -15,7 +15,6 @@ const Register = ({countryCodes, currencies}) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(data);
         post('/register');
     };
 
@@ -115,6 +114,12 @@ const Register = ({countryCodes, currencies}) => {
                         </button>
                     </div>
                 </form>
+
+
+            <div className="mt-8 text-center">
+            <span className="text-gray-600 dark:text-gray-400">Already have an account? </span>
+            <a href={route('app.login')} className="text-blue-600 dark:text-blue-400 hover:underline">Login here</a>
+        </div>
             </div>
     );
 };

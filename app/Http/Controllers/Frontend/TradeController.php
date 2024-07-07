@@ -89,7 +89,7 @@ class TradeController extends Controller
                 $user->save();
             }); 
             
-            return back()->with('success', 'Trade Placed Successfully');
+            return redirect()->route('frontend.active-trade')->with('success', 'Trade Placed Successfully');
         } catch (\Exception $e) {
             return back()->with('error', 'Cannot Place Trade ! Contact Admin');
 
@@ -169,10 +169,111 @@ class TradeController extends Controller
                 $user->save();
             }); 
             
-            return back()->with('success', 'Trade Placed Successfully');
+            return redirect()->route('frontend.active-trade')->with('success', 'Trade Placed Successfully');
         } catch (\Exception $e) {
             return back()->with('error', 'Cannot Place Trade ! Contact Admin');
 
+        }
+    }
+    public function updateTradeStatus(Request $request)
+    {
+        // Retrieve the authenticated user's active trades with positions
+        $customer = Customer::with(['positions' => function($query) {
+                $query->where('is_active', true)->orderByDesc('created_at');
+            }])
+            ->findOrFail(Auth::id());
+    
+        $active_trades = $customer->positions;
+    
+        foreach ($active_trades as $trade) {
+            // Get current price for the symbol
+            $current_price = $this->getCurrentPrice($trade);
+    
+            // Check if trade has expired
+            if (now()->greaterThan($trade->will_close_at)) {
+                // Settle the trade
+                $this->settleTrade($trade, $current_price);
+            } else {
+                // Update ongoing trade status
+                $this->updateOngoingTrade($trade, $current_price);
+            }
+        }
+        $customer = Customer::with(['positions' => function($query) {
+            $query->where('is_active', true)->orderByDesc('created_at');
+        }])
+        ->findOrFail(Auth::id());
+
+        $active_trades = $customer->positions;
+
+        return response()->json([
+            'active_trades' => $active_trades
+        ]);
+    }
+    
+    private function settleTrade($trade, $current_price)
+    {
+        // Determine trade outcome and calculate PNL
+        if ($trade->type === 'long') {
+            $trade->outcome = ($current_price > $trade->entry_price) ? 'positive' : 'negative';
+            $trade->pnl = ($trade->outcome === 'positive') ? ($trade->amount * 0.8) : $trade->amount;
+        } elseif ($trade->type === 'short') {
+            $trade->outcome = ($current_price > $trade->entry_price) ? 'negative' : 'positive';
+            $trade->pnl = ($trade->outcome === 'positive') ? ($trade->amount * 0.8) : $trade->amount;
+        }
+    
+        $trade->trade_close_price = $current_price;
+        $trade->status = 'Settled';
+        // Update trade status
+        $this->completeTrade($trade);
+    }
+    
+    private function updateOngoingTrade($trade, $current_price)
+    {
+        // Update ongoing trade status
+        if ($trade->type === 'long') {
+            $trade->outcome = ($current_price > $trade->entry_price) ? 'positive' : 'negative';
+            $trade->pnl = ($trade->outcome === 'positive') ? ($trade->amount * 0.8) : $trade->amount;
+        } elseif ($trade->type === 'short') {
+            $trade->outcome = ($current_price > $trade->entry_price) ? 'negative' : 'positive';
+            $trade->pnl = ($trade->outcome === 'positive') ? ($trade->amount * 0.8) : $trade->amount;
+        }
+    
+        // Update trade status
+        $trade->save();
+    }
+    
+    private function completeTrade($trade)
+    {
+        $trade->closed_at = now();
+        $trade->is_active = false;
+        $trade->save();
+
+        if($trade->outcome === 'Positive')
+        {
+            $customer = Customer::find($trade->traded_by);
+
+            $customer->balance_usdt = $customer->balance_usdt + $trade->amount + $trade->pnl;
+
+            $customer->save();
+        }
+    }
+    private function getCurrentPrice($trade)
+    {
+
+        if($trade->is_crypto)
+        {
+            $price = json_decode(file_get_contents('https://ticker.thecapex.pro/?symbol=' . $trade->symbol))->price;
+            return $price;
+        }
+        else{
+            $client = new \GuzzleHttp\Client();
+
+            $response = $client->get('https://api-v2.capex.com/quotesv2?key=1&q=' . $request->symbol);
+            $share_datas = json_decode($response->getBody()->getContents(), true);
+
+            $price = $share_datas[$request->symbol]['price'];
+
+            return $price;
         }
     }
 }

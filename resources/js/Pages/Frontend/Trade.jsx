@@ -33,7 +33,10 @@ const Trade = () => {
         <Layout>
             <div className="container mx-auto">
                 <div className={`p-3 rounded-lg flex justify-between items-center ${darkMode ? 'bg-gray-900 text-white' : 'bg-white text-black'}`}>
-                <h2 className="large font-semibold">Trade</h2>
+                <h2 className="large font-semibold">Trade
+                
+                
+                </h2>
                 <select className="p-2 border rounded extra_small" value={selectedType} onChange={handleTypeChange}>
                     <option value="crypto">Crypto</option>
                     <option value="stock">Stock</option>

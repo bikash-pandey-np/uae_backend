@@ -9,6 +9,8 @@ use App\Models\Customer;
 use App\Models\Currency;
 use App\Models\Account;
 use App\Models\Withdraw;
+use App\Models\Position;
+
 use App\Models\Kyc;
 
 use Illuminate\Support\Facades\Mail;
@@ -96,6 +98,24 @@ class DashboardController extends Controller
         return Inertia::render('Frontend/Trade');
     }
 
+
+    public function getActiveTradePage()
+    {
+        return Inertia::render('Frontend/ActiveTradePage', [
+            'active_trades' => Customer::with(['positions' => function($query) {
+                $query->where('is_active', true)->orderBy('created_at', 'desc');
+            }])->where('id', Auth::user()->id)->first()->positions,
+        ]);
+    }
+
+    public function getCompletedTradePage()
+    {
+        return Inertia::render('Frontend/CompletedTrade', [
+            'completed_trades' => Customer::with(['positions' => function($query) {
+                $query->orderBy('created_at', 'desc');
+            }])->where('id', Auth::user()->id)->first()->positions,
+        ]);
+    }
 
     public function getMarketPage()
     {

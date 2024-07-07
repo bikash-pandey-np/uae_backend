@@ -62,6 +62,8 @@ const TradeBySymbol = ({ symbol, balance, user_currency, form_type }) => {
                         </h2>
                         <p className="medium font-bold text-gray-400">≈ {tickerData ? parseFloat(tickerData.data.price).toFixed(4) * parseFloat(user_currency.rate_per_usdt) : 'NA'} {user_currency.symbol}</p>
                     </div>
+                    <a href={route('frontend.active-trade')}>
+                    Active Trades</a>
                 </div>
                 <div className={`p-3 rounded-lg mt-4 ${darkMode ? 'bg-gray-900 text-white' : 'bg-white text-black'}`}>
                     <form className="mt-4" onSubmit={handleSubmit}>

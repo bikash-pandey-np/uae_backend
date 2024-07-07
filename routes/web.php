@@ -116,3 +116,14 @@ Route::post('/trade/crypto', [TradeController::class, 'handleTradeRequest'])
         ->middleware('only_cust')
         ->name('frontend.get-share-price');
 
+        Route::get('/active-trade', [DashboardController::class, 'getActiveTradePage'])
+            ->middleware('only_cust')
+            ->name('frontend.active-trade');
+
+            Route::post('/update-trade-status', [TradeController::class, 'updateTradeStatus'])
+                ->middleware('only_cust')
+                ->name('frontend.update-trade-status');
+
+                Route::get('/trade-history', [DashboardController::class, 'getCompletedTradePage'])
+                    ->middleware('only_cust')
+                    ->name('frontend.trade-history');

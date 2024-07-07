@@ -78,6 +78,7 @@ class AuthController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return redirect()->route('app.login');
+        return redirect()->route('app.login')
+            ->with('success', 'Logout Successful');
     }
 }
