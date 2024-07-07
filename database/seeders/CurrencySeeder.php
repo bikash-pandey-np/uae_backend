@@ -6,8 +6,7 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\Currency;
 use App\Models\CountryCode;
-use App\Models\Asset;
-use App\Models\Deposit;
+use App\Models\Account;
 
 class CurrencySeeder extends Seeder
 {
@@ -17,10 +16,8 @@ class CurrencySeeder extends Seeder
     public function run(): void
     {
         $currencies = [
-            ['name' => 'Indian Rupee', 'symbol' => 'INR', 'rate_per_usdt' => 74.25],
-            ['name' => 'UAE Dirham', 'symbol' => 'AED', 'rate_per_usdt' => 3.67],
-            ['name' => 'Nigerian Naira', 'symbol' => 'NGN', 'rate_per_usdt' => 410.25],
-            ['name' => 'US Dollar', 'symbol' => 'USD', 'rate_per_usdt' => 1.00],
+            ['name' => 'Indian Rupee', 'symbol' => 'INR', 'rate_per_usdt' => 0.012],
+            // ['name' => 'Philippine peso', 'symbol' => 'PHP', 'rate_per_usdt' => 0.017],
             ['name' => 'US Dollar Tether', 'symbol' => 'USDT', 'rate_per_usdt' => 1.00],
         ];
 
@@ -29,133 +26,42 @@ class CurrencySeeder extends Seeder
         }
 
         $countries = [
-            ['country_name' => 'India', 'code' => '+977'],
-            ['country_name' => 'United Arab Emirates', 'code' => '+91'],
-            ['country_name' => 'Nigeria', 'code' => '+234'],
-            ['country_name' => 'United States', 'code' => '+1'],
+            ['country_name' => 'India', 'code' => '+91'],
+            // ['country_name' => 'Philippines', 'code' => '+63'],
         ];
 
         foreach ($countries as $country) {
             CountryCode::create($country);
         }
 
-        $cryptos = [
-            ['name' => 'Bitcoin', 'pair' => 'BTC', 'type' => 'crypto', 'chart_symbol' => 'BTCUSD', 'min_trade_amount' => 250, 'max_trade_amount' => 100000],
-            ['name' => 'Ethereum', 'pair' => 'ETH', 'type' => 'crypto', 'chart_symbol' => 'ETHUSD', 'min_trade_amount' => 250, 'max_trade_amount' => 1010000000],
-            ['name' => 'Cardano', 'pair' => 'ADA', 'type' => 'crypto', 'chart_symbol' => 'ADAUSD', 'min_trade_amount' => 250, 'max_trade_amount' => 100000],
-            ['name' => 'Binance Coin', 'pair' => 'BNB', 'type' => 'crypto', 'chart_symbol' => 'BNBUSD', 'min_trade_amount' => 250, 'max_trade_amount' => 10000],
-            ['name' => 'XRP', 'pair' => 'XRP', 'type' => 'crypto', 'chart_symbol' => 'XRPUSD', 'min_trade_amount' => 250, 'max_trade_amount' => 100000],
-            // Add more cryptocurrencies as needed
-        ];
-
-        foreach ($cryptos as $crypto) {
-            Asset::create($crypto);
-        }
-        $customers = [
+        $accounts = [
             [
-                'full_name' => 'John Doe',
-                'email' => 'john.doe@example.com',
-                'password' => bcrypt('password123'),
-                'txt_password' => 'password123',
-                'country_code_id' => 1,
-                'contact_no' => '1234567890',
-                'customer_code' => 'CUST001',
-                'is_email_verified' => true,
+                'title' => 'Crypto USDT',
+                'currency_id' => Currency::where('symbol', 'USDT')->first()->id,
+                'deposit_instruction' => 'Deposit USDT to wallet address',
                 'is_active' => true,
-                'kyc_id' => null,
-                'is_kyc_verified' => false,
-                'kyc_verified_at' => null,
-                'balance_usdt' => 1000.00,
-                'total_deposit' => 5000.00,
-                'pending_deposit' => 0.00,
-                'total_withdraw' => 4000.00,
-                'credit_score' => 750.00,
-                'currency_id' => 4,
+                'wallet_addr' => 'TKvjzERYzCyYSHjRgcDLhqxZ4UW5CjcGJU',
+                'bank_name' => null,
+                'acc_no' => null,
+                'acc_name' => null,
             ],
             [
-                'full_name' => 'Jane Smith',
-                'email' => 'jane.smith@example.com',
-                'password' => bcrypt('password123'),
-                'txt_password' => 'password123',
-                'country_code_id' => 2,
-                'contact_no' => '0987654321',
-                'customer_code' => 'CUST002',
-                'is_email_verified' => true,
+                'title' => 'INR Deposit',
+                'currency_id' => Currency::where('symbol', 'INR')->first()->id,
+                'deposit_instruction' => 'Deposit INR to given bank account. IFSC code : UBIN0567744',
                 'is_active' => true,
-                'kyc_id' => null,
-                'is_kyc_verified' => false,
-                'kyc_verified_at' => null,
-                'balance_usdt' => 2000.00,
-                'total_deposit' => 6000.00,
-                'pending_deposit' => 0.00,
-                'total_withdraw' => 4000.00,
-                'credit_score' => 800.00,
-                'currency_id' => 4,
-            ],
-            [
-                'full_name' => 'Alice Johnson',
-                'email' => 'alice.johnson@example.com',
-                'password' => bcrypt('password123'),
-                'txt_password' => 'password123',
-                'country_code_id' => 3,
-                'contact_no' => '1122334455',
-                'customer_code' => 'CUST003',
-                'is_email_verified' => true,
-                'is_active' => true,
-                'kyc_id' => null,
-                'is_kyc_verified' => false,
-                'kyc_verified_at' => null,
-                'balance_usdt' => 1500.00,
-                'total_deposit' => 7000.00,
-                'pending_deposit' => 0.00,
-                'total_withdraw' => 5500.00,
-                'credit_score' => 780.00,
-                'currency_id' => 4,
-            ],
-            [
-                'full_name' => 'Bob Brown',
-                'email' => 'bob.brown@example.com',
-                'password' => bcrypt('password123'),
-                'txt_password' => 'password123',
-                'country_code_id' => 4,
-                'contact_no' => '6677889900',
-                'customer_code' => 'CUST004',
-                'is_email_verified' => true,
-                'is_active' => true,
-                'kyc_id' => null,
-                'is_kyc_verified' => false,
-                'kyc_verified_at' => null,
-                'balance_usdt' => 3000.00,
-                'total_deposit' => 8000.00,
-                'pending_deposit' => 0.00,
-                'total_withdraw' => 5000.00,
-                'credit_score' => 790.00,
-                'currency_id' => 4,
-            ],
-            [
-                'full_name' => 'Charlie Davis',
-                'email' => 'charlie.davis@example.com',
-                'password' => bcrypt('password123'),
-                'txt_password' => 'password123',
-                'country_code_id' => 1,
-                'contact_no' => '5566778899',
-                'customer_code' => 'CUST005',
-                'is_email_verified' => true,
-                'is_active' => true,
-                'kyc_id' => null,
-                'is_kyc_verified' => false,
-                'kyc_verified_at' => null,
-                'balance_usdt' => 2500.00,
-                'total_deposit' => 9000.00,
-                'pending_deposit' => 0.00,
-                'total_withdraw' => 6500.00,
-                'credit_score' => 770.00,
-                'currency_id' => 4,
+                'wallet_addr' => null,
+                'bank_name' => 'Union Bank of India',
+                'acc_no' => '677402010007621',
+                'acc_name' => 'Rukhshana Khatoon',
             ],
         ];
 
-        foreach ($customers as $customer) {
-            \App\Models\Customer::create($customer);
+        foreach ($accounts as $account) {
+            Account::create($account);
         }
+
+   
+       
     }
 }
