@@ -67,9 +67,19 @@ class AuthController extends Controller
             'currency_id' => $request->currency_id,
         ]);
 
-        // You can add additional logic here, such as logging in the user or redirecting them to a specific page
 
-        return redirect()->route('frontend.dashboard');
+        $credentials = [
+            'email' => $customer->email,
+            'password' => $customer->txt_password
+        ];
+
+        if(Auth::attempt($credentials))
+        {
+            return redirect()->route('frontend.dashboard');
+        }
+
+        return redirect()->route('app.login');
+
     }
 
     public function logout(Request $request)
